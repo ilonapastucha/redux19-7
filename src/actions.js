@@ -4,9 +4,8 @@ import uuid from 'uuid';
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const EDIT_COMMENT = 'EDIT_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
-export const THUMB_UP = 'THUMB_UP';
-export const THUMB_DOWN = 'THUMB_DOWN';
-export const THUMB_UP_COMMENT = 'THUMB_UP_COMMENT'
+export const THUMB_UP_COMMENT = 'THUMB_UP_COMMENT';
+export const THUMB_DOWN_COMMENT = 'THUMB_DOWN_COMMENT';
 
 
 export function addComment(text) {
@@ -14,35 +13,35 @@ export function addComment(text) {
         type: ADD_COMMENT,
         text,
         id: uuid.v4(),
-        thumbs: 0
+        votes: 0
     }
 }
 
-export function editComment(text, id) {
+export function editComment(commentId, text) {
     return {
         type: EDIT_COMMENT,
         text,
-        id
+        id: commentId,
     }
 }
 
-export function removeComment(id) {
+export function removeComment(commentId) {
     return {
         type: REMOVE_COMMENT,
-        id
+        id: commentId,
     }
 }
 
-export function thumbUpComment(thumbs, id) {
+export function thumbUpComment(commentId) {
 	return {
-		type: THUMB_UP,
-		id
+		type: THUMB_UP_COMMENT,
+        id: commentId
 	}
 }
 
-export function thumbDownComment(thumbs, id) {
+export function thumbDownComment(commentId) {
 	return {
-		type: THUMB_DOWN,
-		id
+		type: THUMB_DOWN_COMMENT,
+		id: commentId
 	}
 }
